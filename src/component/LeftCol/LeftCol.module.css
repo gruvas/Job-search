@@ -1,0 +1,30 @@
+.left_col{
+    float: left;
+    width: 200px;
+}
+.rightcol{
+    margin-left: 225px;
+}
+
+
+.income p{
+    margin-bottom: 10px;
+}
+
+.experience{
+    margin-top: 15px;
+}
+
+.experience p{
+    margin-bottom: 10px;
+}
+
+.block_radio{
+    margin-bottom: 5px;
+}
+
+@media (max-width: 643px){
+    .left_col{
+        display: none;
+    }
+}
