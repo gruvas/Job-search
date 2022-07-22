@@ -113,8 +113,7 @@ button {
     margin-right: 7px;
     margin-bottom: 5px;
 }
-
-.login_form_input_password {
+.login_form_input_password:focus {
     font-family: caption;
 }
 
@@ -228,34 +227,34 @@ button {
     border-radius: 4px;
 }
 
-.listVacancies h1{
+.listVacancies h1 {
     font-size: 16px;
     font-weight: 100;
 }
 
-.listVacancies_profession{
+.listVacancies_profession {
     color: #0032A0;
 
     margin-bottom: 7px;
 }
 
-.listVacancies_company{
+.listVacancies_company {
     color: #0032A0;
 
     margin-bottom: 3px;
 }
 
-.listVacancies_salary{
+.listVacancies_salary {
     font-weight: 700 !important;
 
     margin-bottom: 3px;
 }
 
-.listVacancies_address{
+.listVacancies_address {
     margin-bottom: 5px;
 }
 
-.listVacancies_respond{
+.listVacancies_respond {
     color: #fff;
     background-color: #0032A0;
 
@@ -267,7 +266,7 @@ button {
     border-radius: 5px;
 }
 
-.listVacancies_show_contacts{
+.listVacancies_show_contacts {
     color: #0032A0;
     background-color: #fff;
 
@@ -277,7 +276,7 @@ button {
     border-radius: 5px;
 }
 
-.search_field_settings{
+.search_field_settings {
     display: none;
 }
 
@@ -289,14 +288,14 @@ button {
 
 /* Registration */
 
-.registration{
+.registration {
     max-width: 350px;
     margin-left: auto;
     margin-right: auto;
     padding: 0 15px;
 }
 
-.registration h1{
+.registration h1 {
     font-size: 21px;
     text-align: center;
 
@@ -304,27 +303,32 @@ button {
     margin-bottom: 12px;
 }
 
-.registration input{
+.registration input {
     width: 100%;
     margin-bottom: 7px;
 }
 
-.registration input:focus{
+.registration input:focus {
     border: solid 2px #0032A0;
 }
 
-.registration_about_me{
+.registration_password:focus {
+    font-family: caption;
+}
+
+
+.registration_about_me {
     width: 100%;
     height: 75px;
 
     resize: none;
     outline:none;
 }
-.registration_about_me:focus{
+.registration_about_me:focus {
     border-color: #0032A0;
 }
 
-.registration_btn{
+.registration_btn {
     width: 100%;
 
     color: #fff;
@@ -343,22 +347,22 @@ button {
 
 /* JobSearch */
 
-@media (max-width: 643px){
-    .left_header{
+@media (max-width: 643px) {
+    .left_header {
         display: none;
     }
 
-    .center_header{
+    .center_header {
         display: none;
     }
 
-    .header{
+    .header {
         justify-content: space-around;
     }
 }
 
-@media (max-width: 643px){
-    .coat_arms_img{
+@media (max-width: 643px) {
+    .coat_arms_img {
         display: none;
     }
 
