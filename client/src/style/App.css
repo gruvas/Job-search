@@ -62,6 +62,25 @@ button {
     cursor: pointer;
 }
 
+textarea {
+    border: none;
+    overflow: auto;
+    outline: none;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    resize: none;
+
+    padding: 5px;
+
+    border: solid 1px #ccc;
+    border-radius: 7px;
+
+    font-family: 'PTRootUIWebRegular';
+}
+
 
 /* JobSearch */
 
@@ -75,8 +94,6 @@ button {
 .header {
     display: flex;
     justify-content: space-between;
-
-    margin-top: 10px
 }
 
 .left_header {
@@ -113,7 +130,7 @@ button {
     margin-right: 7px;
     margin-bottom: 5px;
 }
-.login_form_input_password:focus {
+.login_form_input_password {
     font-family: caption;
 }
 
@@ -170,6 +187,12 @@ button {
     padding-top: 6px;
 }
 
+.link.active {
+    border-bottom: 1px solid #fff;
+
+    margin-bottom: 8px;
+}
+
 .search {
     margin-top: 30px;
 }
@@ -204,7 +227,10 @@ button {
 }
 
 .main_content {
-    margin-top: 45px;
+    margin-top: 30px;
+}
+.main_content.personal_area {
+    margin-top: 15px;
 }
 
 .main_content_title {
@@ -245,7 +271,7 @@ button {
 }
 
 .listVacancies_salary {
-    font-weight: 700 !important;
+    font-weight: 400;
 
     margin-bottom: 3px;
 }
@@ -282,6 +308,58 @@ button {
 
 
 
+/* Header Personal_Area */
+
+.header_personal_area_text {
+    margin-top: 13px;
+}
+
+.header_personal_area_text h1 {
+    font-size: 19px;
+
+    margin-bottom: 7px;
+}
+
+.header_personal_area_name, .header_personal_area_email  {
+    font-size: 16px;
+
+    margin-bottom: 3px;
+}
+
+.header_personal_area_btn {
+    width: 100%;
+
+    border: none;
+    border-radius: 5px;
+
+    color: #fff;
+    background-color: #0032A0;
+
+    margin-top: 5px;
+    padding: 4px;
+}
+
+.header_personal_area_status {
+    display: flex;
+}
+
+.status_active {
+    color: #7bd82c;
+}
+
+.status_not_active {
+    color: #7b002c;
+}
+
+.header_personal_area_change {
+    text-align: center;
+    font-size: 12px;
+    
+    margin-bottom: -2px;
+
+    cursor: pointer;
+}
+
 
 
 
@@ -312,8 +390,34 @@ button {
     border: solid 2px #0032A0;
 }
 
-.registration_password:focus {
+.registration_password {
+    display: flex;
+}
+
+.registration_password_input {
+    max-width: 90% !important;
+
+    margin-right: 5px;
+
     font-family: caption;
+}
+
+.registration_password_btn {
+    width: 10%;
+    height: 27px;
+
+    margin-top: 3px;
+
+    border: solid 1px;
+    border-radius: 3px;
+
+    background-color: #fff;
+}
+
+.registration_password_btn_img {
+    width: 60%;
+    
+    padding-top: 4px;
 }
 
 
@@ -321,11 +425,13 @@ button {
     width: 100%;
     height: 75px;
 
-    resize: none;
-    outline:none;
+    font-size: 14px;
+
+    border-color: #000;
+    border-radius: 3px;
 }
 .registration_about_me:focus {
-    border-color: #0032A0;
+    border: solid 2px #0032A0;
 }
 
 .registration_btn {
@@ -341,7 +447,464 @@ button {
     padding: 5px 10px;
 }
 
+.dropdown_title {
+    display: flex;
+    justify-content: space-between;
 
+    margin-top: 10px;
+    padding-left: 8px;
+    padding-right: 7px;
+
+    border: solid 1px ;
+    border-radius: 3px;
+}
+
+.dropdown_value {
+    margin-top: 7px;
+
+    border: solid 1px ;
+    border-radius: 3px;
+}
+
+.dropdown_value.entering {
+    animation: show_dropdowne 0.5s;
+}
+.dropdown_value.entered {
+    animation: show_dropdowne 0.5s;
+}
+.dropdown_value.exiting {
+    animation: show_dropdowne 0.5s;
+}
+
+.dropdown div {
+    padding: 4px;
+}
+
+.closing_block {
+    position: fixed;
+    inset: -1;
+}
+
+.dropdown_hr {
+    max-width: 305px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 0 15px;
+
+    color: #ccc;
+}
+
+.no_select {
+    user-select: none;
+}
+
+
+
+
+/* PersonalArea workman */
+
+.filling_resume {
+    margin: 25px 150px 25px 150px;
+}
+
+.filling_resume div {
+    margin-bottom: 15px;
+}
+
+.filling_resume_title {
+    margin-left: 3px;
+    margin-bottom: 5px;
+}
+
+.filling_resume_input {
+    width: 100%;
+
+    border-color: #ccc;
+    border-radius: 7px;
+}
+.filling_resume_input:focus {
+    border-color: #0032A0;
+}
+
+.filling_resume_textarea {
+    width: 100%;
+    height: 100px;
+}
+.filling_resume_textarea:focus {
+    border-color: #0032A0;
+}
+
+.filling_resume_salary,.filling_resume_phone {
+    max-width: 225px;
+}
+
+.filling_resume_btn {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    color: #fff;
+    background-color: #0032A0;
+
+    border: none;
+    border-radius: 7px;
+
+    padding: 5px 15px;
+}
+
+.interview_invitations_title {
+    font-size: 21px;
+    text-align: center;
+
+    margin-bottom: 15px;
+}
+
+.interview_invitations .listVacancies {
+    max-width: 100%;
+
+    margin-left: 0;
+    margin-bottom: 15px;
+}
+
+.personal_area_hr {
+    height:1px;
+
+    color: #ccc;
+    background-color:#ccc;
+
+    border: 0px none;
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+
+.listVacancies_respond.delete {
+    background-color: #cc3300;
+}
+
+.interview_invitations_contacts {
+    display: flex;
+}
+
+/* PersonalArea MakingAppointment */
+
+.making_appointment {
+    margin-top: 25px;
+}
+
+.making_appointment_title {
+    text-align: center;
+    font-size: 21px;
+}
+
+
+.making_appointment_block {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.making_appointment_timing {
+    display: flex;
+    flex-wrap: wrap;
+
+    max-width: 235px;
+}
+
+.making_appointment_timing_block {
+    width: 20px;
+    
+    margin-right: 15px;
+    margin-bottom: 15px;
+
+    cursor: pointer;
+}
+
+.making_appointment_timing_block.active {
+    width: 30px;
+    max-height: 60px;
+
+    border: solid 1px #000;
+    border-radius: 5px;
+}
+
+.making_appointment_timing_block:first {
+    margin-top: -3px;
+}
+
+.making_appointment_day,.making_appointment_date {
+    text-align: center;
+}
+
+.making_appointment_active {
+    margin-top: 1px;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2px;
+
+    width: 10px;
+    height: 10px;
+    background-color: #117DC1;
+    border-radius: 50px;
+}
+
+.appointment_timing_right {
+    max-width: 206px;
+    height: 70px;
+
+    margin-bottom: 15px;
+    padding: 5px;
+
+    box-shadow: 0 2px 12px #edeff0;
+    
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.appointment_timing_right_btn {
+    color: #fff;
+    background-color: #0032A0;
+
+    border: none;
+    border-radius: 3px;
+
+    margin: 5px 7px;
+    padding: 2px 9px;
+}
+
+.appointment_timing_right_btn:disabled {
+    cursor: default;
+    background-color: #ccc;
+}
+
+.appointment_timing_right_btn.active {
+    color: #000;
+    background-color: #7bd82c;
+}
+.appointment_timing_right_btn.inactive {
+    cursor: default;
+
+    background-color: #ccc;
+}
+
+.appointment_timing_right_end {
+    width: 100%;
+
+    color: #fff;
+    background-color: #0032A0;
+
+    border: none;
+    border-radius: 11px;
+    padding: 4px 9px;
+}
+
+.appointment_timing_right_end:disabled {
+    cursor: default;
+    background-color: #ccc;
+}
+
+
+
+/* PersonalArea admin */
+
+.title {
+    text-align: center;
+
+    font-size: 21px;
+}
+
+.personal_area_admin_title {
+    margin-top: 11px;
+    margin-bottom: 27px;
+}
+
+.personal_area_admin_date {
+    font-size: 19px;
+    text-align: center;
+
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.personal_area_admin_card {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 9px;
+} 
+
+.pa_time {
+    display: flex;
+
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.pa_main_information {
+    margin-top: 5px;
+    margin-left: 30px;
+
+    padding: 7px;
+    
+    max-width: 450px;
+    min-width: 375px;
+    
+    box-shadow: 0 2px 12px #edeff0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.pa_field {
+    display: flex;
+
+    margin-bottom: 5px;
+}
+
+
+
+
+/* JobCreation */
+
+.job_creation {
+    margin: 25px 150px 25px 150px;
+}
+
+.job_creation_indent {
+    margin-top: 15px
+}
+
+.job_creation_btn {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    font-size: 17px;
+
+    color: #fff;
+    background-color: #0032A0;
+
+    border: none;
+    border-radius: 11px;
+    
+    padding: 4px 25px;
+    margin-top: 15px;
+}
+
+.dropdown_block {
+    display: flex;
+
+    font-size: 15px;
+
+    width: 225px;
+
+    border: 1px solid #ccc;
+    border-radius: 7px;
+
+    padding: 3px 3px 0 3px;
+}
+
+.dropdown_block img {
+    margin-left: auto;
+    margin-right: 5px;
+    margin-bottom: 2px;
+}
+
+.dropdown_menu {
+    width: 225px;
+
+    margin-top: 7px;
+
+    border: 1px solid #ccc;
+    border-radius: 7px;
+
+    padding-left: 9px;
+}
+
+.dropdown_menu_text {
+    cursor: pointer;
+
+    text-align: center;
+    
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+ 
+.dropdown_menu_hr {
+    margin-left: 20px;
+    margin-right: 20px;
+
+    color: #ccc;
+}
+
+
+
+
+/* ListEmployees */
+
+.list_employees {
+    margin: 25px 150px 25px 150px;
+    padding: 15px;
+
+    box-shadow: 0 2px 12px #edeff0;
+
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.list_employees h1 {
+    font-size: 16px;
+    font-weight: 100;
+    
+    margin-bottom: 9px;
+}
+
+.list_employees_contacts {
+    margin-top: 7px;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.list_employees_title {
+    margin-bottom: 5px;
+}
+
+.list_employees_btn_delete,.list_employees_btn_respond{
+    color: #fff;
+    background-color: #0032A0;
+
+    border: none;
+    border-radius: 5px;
+    
+    border: 1px solid #117DC1;
+
+    padding: 3px 11px;
+}
+
+.list_employees_btn_respond {
+    margin-top: 5px;
+}
+
+.list_employees_btn_change {
+    color: #117DC1;
+    background-color: #fff;
+
+    border: 1px solid #117DC1;
+    border-radius: 5px;
+
+    margin-left: 9px;
+    padding: 3px 11px;
+}
+
+/* LeftCol */
+
+.left_col{
+    float: left;
+    width: 200px;
+}
 
 
 
@@ -358,6 +921,34 @@ button {
 
     .header {
         justify-content: space-around;
+    }
+
+    .left_col{
+        display: none;
+    }
+
+    .left_col.search{
+        display: block;
+        position: absolute;
+
+        width: 90vw;
+
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        text-align: center;
+
+        border: 1px solid;
+        border-radius: 7px;
+
+        background-color: #fff;
+    }
+}
+
+@media (min-width: 643px) {
+    .left_col.search{
+        display: none;
     }
 }
 
@@ -378,5 +969,59 @@ button {
 
     .listVacancies {
         margin-left: 0px;
+    }
+}
+
+/* PersonalArea workman */
+
+@media (max-width: 785px) {
+    .filling_resume {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+/* PersonalArea workman */
+
+@media (max-width: 468px) {
+    .appointment_timing_right {
+        width: 141px;
+        height: 101px;
+    }
+
+    .appointment_timing_right_end {
+        width: 142px;
+    }
+}
+
+/* PersonalArea admin */
+
+@media (max-width: 544px) {
+    .pa_field {
+        display: block;
+    }
+
+    .pa_main_information {
+        min-width: 170px;
+    }
+
+    .pa_time {
+        display: block;
+    }
+}
+
+/* JobCreation */
+
+@media (max-width: 940px) {
+    .list_employees {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+}
+
+@media (max-width: 690px) {
+    .job_creation,.list_employees {
+        margin-left: 15px;
+        margin-right: 15px;
     }
 }
