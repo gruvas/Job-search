@@ -94,7 +94,7 @@ router.post('/check',
             const {id} = req.body
 
             let check = await User.findOne({_id: id})
-console.log()
+
             res.json(check)
         } catch(e) {
 

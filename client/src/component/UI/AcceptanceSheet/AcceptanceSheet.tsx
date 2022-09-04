@@ -4,6 +4,11 @@ import { useHttp } from '../../../hooks/http.hook';
 
 import { monthNames } from '../../monhNames';
 
+import { IVisitors } from '../../interface/IVisitors';
+import { IUser } from '../../interface/IUser';
+import { IFields } from '../../interface/IFields';
+
+
 
 const AcceptanceSheet = () => {
     const {request} = useHttp()
@@ -11,7 +16,7 @@ const AcceptanceSheet = () => {
 
     const [data, setData] = useState<IFields[]>([])
 
-    let data_obj: any, user_obj
+    let data_obj: IVisitors[], user_obj: IUser
 
     useEffect(() => {
         let data = request('/api/reception_unemployed/time', 'POST').then((value) => {return (value)})
@@ -59,8 +64,8 @@ const AcceptanceSheet = () => {
             {data.map((post, index) => 
                 <div key={'acceptance_sheet' + index}>
 
-                    {index != 0 && data[index-1].day == post.day 
-                    && data[index-1].month == post.month ? (
+                    {index !== 0 && data[index-1].day === post.day 
+                    && data[index-1].month === post.month ? (
                             <div></div>
                         ) : (
                             <div className='personal_area_admin_date'>
@@ -73,7 +78,7 @@ const AcceptanceSheet = () => {
                         <div className='pa_time'>
                             <p>Время:&ensp;</p>
 
-                            {post.minutes == 0 ? (
+                            {post.minutes  === 0 ? (
                                 <p>{`${post.hours}: 00`}</p>
                                 ) : (
                                     <p>{`${post.hours}: ${post.minutes}`}</p>
@@ -88,7 +93,7 @@ const AcceptanceSheet = () => {
                                 </p>
                             </div>
 
-                            {post.profession == undefined ? (
+                            {post.profession === undefined ? (
                                 <div></div>
                             ) : (
                                     <div className='pa_field'>
@@ -101,7 +106,7 @@ const AcceptanceSheet = () => {
                                 )
                             }
 
-                            {post.education == undefined ? (
+                            {post.education === undefined ? (
                                     <div></div>
                             ) : (
                                     <div className='pa_field'>
@@ -114,7 +119,7 @@ const AcceptanceSheet = () => {
                                 )
                             }
 
-                            {post.salary == undefined ? (
+                            {post.salary === undefined ? (
                                     <div></div>
                             ) : (
                                     <div className='pa_field'>
@@ -129,7 +134,7 @@ const AcceptanceSheet = () => {
                                 )
                             }
 
-                            {post.phone == undefined || post.phone == '' ? (
+                            {post.phone === undefined || post.phone === '' ? (
                                     <div></div>
                             ) : (
                                     <div className='pa_field'>
@@ -144,7 +149,7 @@ const AcceptanceSheet = () => {
                                 )
                             }
 
-                            {post.contacts == undefined ? (
+                            {post.contacts === undefined ? (
                                     <div></div>
                             ) : (
                                     <div className='pa_field'>
@@ -167,18 +172,3 @@ const AcceptanceSheet = () => {
 }
 
 export default AcceptanceSheet;
-
-
-interface IFields {
-    date: Date,
-    day: number,
-    month: string,
-    hours: number,
-    minutes: number,
-    name: string,
-    profession: string,
-    education: string,
-    salary: string,
-    phone: string,
-    contacts: string
-}

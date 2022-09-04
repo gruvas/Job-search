@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 
+import arrow_down from '../../../img/arrow_down.svg'
+
 import { useHttp } from "../../../hooks/http.hook";
+import update_vacancy from "./update_vacancy";
+
 import SalaryValidation from "../../validation/salary_validation";
 import PhoneNumberValidation from "../../validation/phone_number_validation";
-import update_vacancy from "./update_vacancy";
 import { user_search } from "../../requests/user_search";
+import { IShortDataUser } from "../../interface/IShortDataUser";
 
-import arrow_down from '../../../img/arrow_down.svg'
 
 
 const FillingResume = () => {
     const {request} = useHttp()
     
-    const [data_user, setData_user] = useState({
+    const [data_user, setData_user] = useState<IShortDataUser>({
         name: '',
         phone: '',
         about_me: '',
@@ -31,7 +34,7 @@ const FillingResume = () => {
     useEffect(() => {
         let data = user_search(request)
         
-        data.then(async function(value: any){
+        data.then(async function(value: IShortDataUser){
             await setData_user(value)
 
             await setExperience(value.experience || 'Требуемый опыт работы')
@@ -45,7 +48,7 @@ const FillingResume = () => {
 
     
 
-    const changeHandler = (event: any) => {
+    const changeHandler = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         setData_user({...data_user, [event.target.name]: event.target.value})
     }
 

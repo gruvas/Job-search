@@ -1,6 +1,3 @@
-import { useEffect, useState } from 'react';
-
-
 import Header from '../component/UI/Header/Header';
 import LeftCol from '../component/UI/LeftCol/LeftCol';
 import Navbar from '../component/UI/Navbar/Navbar';
@@ -11,7 +8,7 @@ import EmployerJobSearch from '../component/UI/EmployerJobSearch/EmployerJobSear
 
 
 const JobSearch = () => {
-    let type = JSON.parse(localStorage.getItem('useData') || 'false').type
+    let type: string = JSON.parse(localStorage.getItem('useData') || 'false').type
 
     return (
         <div>
@@ -22,19 +19,19 @@ const JobSearch = () => {
             <div className='main_content'>
                 <h1 className='main_content_title'>Популярные вакансии</h1>
                 
-                <LeftCol/>
+                <LeftCol  value=''/>
 
                 {!!type ? (
                     <>
-                        {type == 'workman' && (
+                        {type === 'workman' && (
                             <WorkmanJobSearch/>
                         )}
 
-                        {type == 'employer' && (
+                        {type === 'employer' && (
                             <EmployerJobSearch/>
                         )}
 
-                        {type == 'admin' && (
+                        {type === 'admin' && (
                             <WorkmanJobSearch/>
                         )}
                     </>

@@ -4,17 +4,17 @@ import { observer } from 'mobx-react-lite';
 import { useHttp } from '../../../hooks/http.hook';
 import sort_options from '../../../store/sort_options';
 
-import { IVacancies } from '../../interface/IVacancies'
 import ListCreatedVacancies from '../ListCreatedVacancies/ListCreatedVacancies';
 import search_string from '../../../store/search_string';
+import { IUser } from '../../interface/IUser';
 
 const WorkmanJobSearch = observer(() => {
     const {request} = useHttp()
 
     let userId = JSON.parse(localStorage.getItem('useData') || 'false').userId
 
-    const [vacancies, setVacancies] = useState<IVacancies[]>([]);
-    const [typeUser, setTypeUser] = useState<IVacancies[]>([]);
+    const [vacancies, setVacancies] = useState<IUser[]>([]);
+    const [typeUser, setTypeUser] = useState<string>('');
 
     useEffect(() => {
         const user_verification = async () => {
@@ -25,7 +25,7 @@ const WorkmanJobSearch = observer(() => {
     
             let user = await data
             
-            if(user == null) {
+            if(user === null) {
                 localStorage.removeItem('useData')
 
                 window.location.reload()
@@ -53,10 +53,8 @@ const WorkmanJobSearch = observer(() => {
     }, [])
 
     useEffect(() => {
-        if(sort_options.state == true) {
-            console.log(1)
-
-            if(sort_options.experience == 'Не имеет значения') {
+        if(sort_options.state === true) {
+            if(sort_options.experience === 'Не имеет значения') {
                 //@ts-ignore
                 let intermediate = request('/api/vacancy/vacancy_search_salary', 'POST', {salary: Number(sort_options.salary)})
 
@@ -77,7 +75,7 @@ const WorkmanJobSearch = observer(() => {
     }, [sort_options.state])
 
     useEffect(() => {
-        if(search_string.state == true) {
+        if(search_string.state === true) {
             //@ts-ignore
             let intermediate = request('/api/vacancy/vacancy_search_name', 'POST', {text: search_string.text})
             

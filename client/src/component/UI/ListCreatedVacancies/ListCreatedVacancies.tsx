@@ -1,45 +1,52 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHttp } from '../../../hooks/http.hook';
+import { IVacancies } from '../../interface/IVacancies';
 
-const ListCreatedVacancies = (props: any) => {
+
+
+
+const ListCreatedVacancies = (props: {index: number, key?: string, type: string, value: IVacancies}) => {
     let class_name_block
     let vacancies = props.value
     let index: number = props.index
-    let type = props.type
+    let type: string = props.type
     let path = document.location.pathname
-    let status = vacancies.status
+    let status: boolean = Boolean(vacancies.status) || false
 
     const {request}= useHttp()
 
     let storeg = JSON.parse(localStorage.getItem('useData') || 'false')
     
-    if(path == '/') {
+    if(path === '/') {
         class_name_block = 'listVacancies'
     } else {
         class_name_block = 'list_employees'
     }
 
 
-    const [job_status, setJobStatus] = useState(status)
-    const [job_delete, setDeleteJob] = useState(false)
+    const [job_status, setJobStatus] = React.useState<boolean>(status)
+    const [job_delete, setDeleteJob] = React.useState(false)
 
-    function delete_job(vacancies: any) {
-        
+    function delete_job(vacancies: IVacancies) {
+        console.log('vacancies', vacancies)
         let id = vacancies._id
         let arr_links_creator = vacancies.links_creator
         let arr_links_user = vacancies.links_user
 
-        arr_links_creator.map((post: string) => {
-            //@ts-ignore
-            request('/api/vacancy/one_creator_delete_link', 'POST', {vacancyId: id, creatorId: post})
-        })
 
-        arr_links_user.map((post: string) => {
-            console.log(post)
+        if(arr_links_creator) {
+            arr_links_creator.map((post: string) => {
+                //@ts-ignore
+                request('/api/vacancy/one_creator_delete_link', 'POST', {vacancyId: id, creatorId: post})
+            })
+        }
 
-            //@ts-ignore
-            request('/api/vacancy/one_user_delete_link', 'POST', {vacancyId: id, userId: post})
-        })
+        if(arr_links_user) {
+            arr_links_user.map((post: string) => {
+                //@ts-ignore
+                request('/api/vacancy/one_user_delete_link', 'POST', {vacancyId: id, userId: post})
+            })
+        }
 
         //@ts-ignore
         request('/api/vacancy/delete', 'POST', {id})
@@ -64,9 +71,7 @@ const ListCreatedVacancies = (props: any) => {
         const compliances_check = request('/api/users/check_links_vacancy', 'POST', {id, userId})
 
         compliances_check.then((value) => {
-            console.log(value)
-
-            if(value == null) {
+            if(value === null) {
                 //@ts-ignore
                 request('/api/vacancy/respond', 'POST', {id, userId})
         
@@ -89,7 +94,7 @@ const ListCreatedVacancies = (props: any) => {
                 ) : (
                     <div>
                         {
-                            (index == 0 && path == '/personal_area_employer') && (
+                            (index === 0 && path === '/personal_area_employer') && (
                                 <h1 className='title'>Список созданных вакансий</h1>
                             ) 
                         }
@@ -190,14 +195,14 @@ const ListCreatedVacancies = (props: any) => {
             
                             {!!storeg.token && (
                                 <>
-                                    {(type == 'employer' && path == '/personal_area_employer') && (
+                                    {(type === 'employer' && path === '/personal_area_employer') && (
                                         <>
                                             <button className='list_employees_btn_delete' onClick={() => delete_job(vacancies)}>Удалить</button>
                                             <button className='list_employees_btn_change' onClick={() => update_status(vacancies._id)}>Изменить статус</button>
                                         </>
                                     )}
 
-                                    {(type == 'workman' && path == '/') && (
+                                    {(type === 'workman' && path === '/') && (
                                         <>
                                             <button className='list_employees_btn_respond' onClick={() => respond(vacancies._id)}>Откликнуться</button>
                                         </>

@@ -150,32 +150,32 @@ export const Days = () => {
             if(visiting_time_obj.month == time_segmented[i].month 
                 && visiting_time_obj.day == time_segmented[i].day) {
                     
-                    if(time_segmented[i].hours == 14) {
-                        if(time_segmented[i].minutes == 0) {
+                    if(time_segmented[i].hours === 14) {
+                        if(time_segmented[i].minutes === 0) {
                             state_variable[0] = 'inactive'
                         } 
                         
-                        if(time_segmented[i].minutes == 30) {
+                        if(time_segmented[i].minutes === 30) {
                             state_variable[1] = 'inactive'
                         } 
                     }
 
-                    if(time_segmented[i].hours == 15) {
-                        if(time_segmented[i].minutes == 0) {
+                    if(time_segmented[i].hours === 15) {
+                        if(time_segmented[i].minutes === 0) {
                             state_variable[2] = 'inactive'
                         } 
                         
-                        if(time_segmented[i].minutes == 30) {
+                        if(time_segmented[i].minutes === 30) {
                             state_variable[3] = 'inactive'
                         } 
                     }
 
-                    if(time_segmented[i].hours == 16) {
-                        if(time_segmented[i].minutes == 0) {
+                    if(time_segmented[i].hours === 16) {
+                        if(time_segmented[i].minutes === 0) {
                             state_variable[4] = 'inactive'
                         } 
                         
-                        if(time_segmented[i].minutes == 30) {
+                        if(time_segmented[i].minutes === 30) {
                             state_variable[5] = 'inactive'
                         } 
                     }
@@ -206,7 +206,7 @@ export const Days = () => {
 }
 
 function timing_btn(e: any, id: string, hours: number, minutes: number) {
-    if(document.querySelector(`#${id}`)!.classList.value != 'appointment_timing_right_btn inactive'){
+    if(document.querySelector(`#${id}`)!.classList.value !== 'appointment_timing_right_btn inactive'){
         visiting_time_obj.hours = hours
         visiting_time_obj.minutes = minutes
 

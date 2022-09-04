@@ -28,7 +28,7 @@ const Navbar = () => {
                 : (
                     <div>
                         {
-                            pathname == '/' ? (
+                            pathname === '/' ? (
                                 <div className='navbar'>
                                     <Link className='link active' to="/">Соискателям</Link>
                                     <Link className='link' to="employer">Работодателям</Link>

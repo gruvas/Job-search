@@ -27,7 +27,7 @@ const PersonalArea = () => {
     useEffect(() => {
         let data = user_search(request)
 
-        data.then(async function(value: any){
+        data.then(async function(value: IUser){
             await setUser(value)
         })
     }, [])
@@ -42,7 +42,7 @@ const PersonalArea = () => {
                     
 
                         {
-                            data_user.type == 'workman' && (
+                            data_user.type === 'workman' && (
                                 <>
                                     <div className='header_personal_area_status'>
                                         <p>Статус: </p>

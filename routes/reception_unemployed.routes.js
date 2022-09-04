@@ -54,8 +54,6 @@ router.post('/delete',
         try{
             const {_id} = req.body
 
-            console.log('Body: ', _id)
-            
             await Reception_unemployed.deleteOne({_id})
 
             res.status(201).json({message: 'Удаление завершено'})
@@ -68,8 +66,6 @@ router.post('/delete',
 router.post('/user_delete_link',
     async(req, res) => {
         try{
-            console.log('Body: ', req.body)
-
             const {unemployed_id, reception_unemployed_id} = req.body
 
             await User.updateOne(

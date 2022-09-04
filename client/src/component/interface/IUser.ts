@@ -7,6 +7,7 @@ export interface IUser {
     name?: string
     type?: string
     salary?: string
+    status?: string
     looking_job: boolean
     profession?: string
     education?: string

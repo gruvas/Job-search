@@ -7,13 +7,13 @@ import ListCreatedVacancies from '../component/UI/ListCreatedVacancies/ListCreat
 import ListEmployees from '../component/UI/ListEmployees/ListEmployees';
 import { useHttp } from '../hooks/http.hook';
 
-import { IVacancies } from '../component/interface/IVacancies';
+import { IUser } from '../component/interface/IUser';
 
 const PersonalAreaEmployer = () => {
     const {request} = useHttp()
 
-    const [vacancies, setVacancies] = useState<IVacancies[]>([]);
-    const [typeUser, setTypeUser] = useState<IVacancies[]>([]);
+    const [vacancies, setVacancies] = useState<IUser[]>([]);
+    const [typeUser, setTypeUser] = useState<string>('');
     const [users, setUsers] = useState<any[]>([]);
 
     let useData = JSON.parse(localStorage.getItem('useData') || 'false')
@@ -42,10 +42,6 @@ const PersonalAreaEmployer = () => {
         post_search()
     }, [])
 
-    useEffect(() => {
-        console.log('users', users)
-    }, [users])
-    
 
     return (
         <div>
@@ -87,8 +83,6 @@ async function array_creation(request: any, userId: string) {
 
     //@ts-ignore
     let data = request('/api/users/links_vacancy', 'POST', {userId}).then((value) => {
-        console.log('userId', userId)
-        console.log('value', value)
         return (value)
     })
 
@@ -112,7 +106,7 @@ async function array_creation(request: any, userId: string) {
 
         intermediate_users = await user
 
-        if(intermediate_users.length != 0) {
+        if(intermediate_users.length !== 0) {
             intermediate_users.vacancy_id = intermediate_vacancy._id
 
             arr_users.push(intermediate_users)

@@ -35,7 +35,7 @@ const JobCreation = () => {
         setData_vacancy({...data_vacancy, experience, employment})
     }, [employment, experience])
 
-    const changeHandler = (event: any) => {
+    const changeHandler = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         setData_vacancy({...data_vacancy, [event.target.name]: event.target.value})
     }
 

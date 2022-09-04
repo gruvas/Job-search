@@ -1,5 +1,7 @@
- export async function status_change(request: any, data_user: any) {
-    console.log('id', data_user._id)
+import { IUser } from "../../interface/IUser"
+
+ export async function status_change(request: any, data_user: IUser) {
+
     let user = {
         id:  data_user._id, 
         looking_job: !data_user.looking_job

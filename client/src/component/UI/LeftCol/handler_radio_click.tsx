@@ -1,6 +1,7 @@
+import React from 'react'
 import sort_options from "../../../store/sort_options"
 
-const handler_radio_check = (e:any): string => {
+const handler_radio_check = (e: React.ChangeEvent<HTMLInputElement>): string => {
     const arr_income: number[] = [0, 13000, 24000, 41000, 1]
     const arr_experience: string[] = [
         'Не имеет значения', 'От 1 года до 3 лет', 
@@ -15,28 +16,17 @@ const handler_radio_check = (e:any): string => {
 
     let check_salary = reg_income_numbers.exec(active_input)
     let check_experience = reg_experience_numbers.exec(active_input)
-    // let [original_expression, result] = regExp!.exec(active_input)
     
-    if(check_salary != null) {
-        console.log(check_salary[1])
-
-        
-
-        if(Number(check_salary![1]) == 5) {
+    if(check_salary !== null) {
+        if(Number(check_salary![1]) === 5) {
             const input_element = document.getElementById('input_income5') as HTMLInputElement
 
             sort_options.updateSalary(Number(input_element.value))
         } else {
             sort_options.updateSalary(arr_income[Number(check_salary[1])-1])
         }
-
-        console.log(sort_options.salary)
     } else {
-        console.log(check_experience![1])
-
         sort_options.updateExperience(arr_experience[Number(check_experience![1])-1])
-
-        console.log(sort_options.experience)
     }
 
 
