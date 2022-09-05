@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-    // @ts-ignore
     let storeg = JSON.parse(localStorage.getItem('useData') || 'false')
     let pathname: string = document.location.pathname
 

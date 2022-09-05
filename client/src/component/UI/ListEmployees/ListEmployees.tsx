@@ -17,7 +17,6 @@ const ListEmployees = (props: {index: number, key?: string, value: IValue[]}) =>
     const [element_display, setElementDisplay] = useState(true)
 
     function deleting_links(userId: string, vacancyId: string) {
-        //@ts-ignore
         request('/api/vacancy/deleting_links', 'POST', {userId, vacancyId})
 
         alert('Удаление прошло успешно')

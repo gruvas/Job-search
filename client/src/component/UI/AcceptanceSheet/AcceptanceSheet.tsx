@@ -25,7 +25,6 @@ const AcceptanceSheet = () => {
         const data_acquisition = async () => {
             data_obj = await data;
             
-            //@ts-ignore
             let user = request('/api/users/user_search', 'POST', {userId: data_obj[0].unemployed}).then((value) => {return (value)})
 
             const printAddress = async () => {

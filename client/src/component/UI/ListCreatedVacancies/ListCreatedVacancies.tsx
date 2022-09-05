@@ -35,19 +35,16 @@ const ListCreatedVacancies = (props: {index: number, key?: string, type: string,
 
         if(arr_links_creator) {
             arr_links_creator.map((post: string) => {
-                //@ts-ignore
                 request('/api/vacancy/one_creator_delete_link', 'POST', {vacancyId: id, creatorId: post})
             })
         }
 
         if(arr_links_user) {
             arr_links_user.map((post: string) => {
-                //@ts-ignore
                 request('/api/vacancy/one_user_delete_link', 'POST', {vacancyId: id, userId: post})
             })
         }
 
-        //@ts-ignore
         request('/api/vacancy/delete', 'POST', {id})
 
         setDeleteJob(true)
@@ -57,7 +54,7 @@ const ListCreatedVacancies = (props: {index: number, key?: string, type: string,
 
     function update_status(id: string) {
         let intermediate_status = !status
-        //@ts-ignore
+
         request('/api/vacancy/status_change', 'POST', {id, status: intermediate_status})
 
         setJobStatus(!job_status)
@@ -66,12 +63,10 @@ const ListCreatedVacancies = (props: {index: number, key?: string, type: string,
     async function respond(id: string) {
         let userId = storeg.userId
 
-        //@ts-ignore
         const compliances_check = request('/api/users/check_links_vacancy', 'POST', {id, userId})
 
         compliances_check.then((value) => {
             if(value === null) {
-                //@ts-ignore
                 request('/api/vacancy/respond', 'POST', {id, userId})
         
                 alert('Резюме отправлено на данную вакансию.')

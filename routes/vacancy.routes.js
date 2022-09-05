@@ -290,8 +290,6 @@ router.post('/vacancy_search_salary',
         const {salary} = req.body
 
         try{
-            // const vacancy = await Vacancy.find({status: true})
-            // const vacancy = await Vacancy.find({status: true, salary: {$gt: salary}})
             const vacancy = await Vacancy.find({status: true, salary: {$gte: salary}})
 
             res.json(vacancy)

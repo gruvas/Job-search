@@ -19,7 +19,6 @@ const WorkmanJobSearch = observer(() => {
 
     useEffect(() => {
         const user_verification = async () => {
-            //@ts-ignore
             let data = request('/api/auth/check', 'POST', {id: userId}).then((value) => {
                 return value
             })
@@ -37,14 +36,12 @@ const WorkmanJobSearch = observer(() => {
             user_verification()
         }
 
-        // @ts-ignore
         let intermediate = request('/api/vacancy/active_vacancy_search', 'POST')
 
         intermediate.then((value: IVacancies[]) => {
             setVacancies(value)
         })
         
-        // @ts-ignore
         let user = request('/api/users/user_search', 'POST', {userId})
         
         user.then((value: IUser) => {
@@ -56,14 +53,12 @@ const WorkmanJobSearch = observer(() => {
     useEffect(() => {
         if(sort_options.state === true) {
             if(sort_options.experience === 'Не имеет значения') {
-                //@ts-ignore
                 let intermediate = request('/api/vacancy/vacancy_search_salary', 'POST', {salary: Number(sort_options.salary)})
 
                 intermediate.then((value: IVacancies[]) => {
                     setVacancies(value)
                 })
             } else {
-                //@ts-ignore
                 let intermediate = request('/api/vacancy/vacancy_search_salary_experience', 'POST', {salary: sort_options.salary, experience: sort_options.experience})
 
                 intermediate.then((value: IVacancies[]) => {
@@ -77,7 +72,6 @@ const WorkmanJobSearch = observer(() => {
 
     useEffect(() => {
         if(search_string.state === true) {
-            //@ts-ignore
             let intermediate = request('/api/vacancy/vacancy_search_name', 'POST', {text: search_string.text})
             
             intermediate.then((value: IVacancies[]) => {

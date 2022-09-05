@@ -59,9 +59,8 @@ export const Days = () => {
                 let _id = time[i]._id
                 let unemployed_id = time[i].unemployed
 
-                    //@ts-ignore
                     request('/api/reception_unemployed/delete', 'POST', {_id})
-                    //@ts-ignore
+
                     request('/api/reception_unemployed/user_delete_link', 'POST', {unemployed_id: unemployed_id[0], reception_unemployed_id: _id})
                 }
             }

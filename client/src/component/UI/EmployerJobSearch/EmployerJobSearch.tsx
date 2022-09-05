@@ -36,14 +36,12 @@ const EmployerJobSearch = observer(() => {
     useEffect(() => {
         if(sort_options.state === true) {
             if(sort_options.experience === 'Не имеет значения') {
-                //@ts-ignore
                 let user = request('/api/users/user_search_salary', 'POST', {salary: Number(sort_options.salary)})
 
                 user.then((value) => {
                     setDataUser(value)
                 })
             } else {
-                //@ts-ignore
                 let user = request('/api/users/user_search_salary_experience', 'POST', {salary: sort_options.salary, experience: sort_options.experience})
                 
                 user.then((value) => {
@@ -57,7 +55,6 @@ const EmployerJobSearch = observer(() => {
 
     useEffect(() => {
         if(search_string.state === true) {
-            //@ts-ignore
             let user = request('/api/users/user_search_profession', 'POST', {text: search_string.text})
             
             user.then((value) => {

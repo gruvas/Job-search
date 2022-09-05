@@ -17,7 +17,6 @@ const Authorization = () => {
 
     const loginHandler = async () => {
         try {
-            // @ts-ignore
             let data = await request('/api/auth/login', 'POST', {...form})
 
             window.localStorage.setItem('useData', JSON.stringify(data))

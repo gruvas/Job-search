@@ -22,14 +22,12 @@ const PersonalAreaEmployer = () => {
 
 
     useEffect(() => {
-        // @ts-ignore
         let intermediate = request('/api/vacancy/vacancy_search', 'POST', {user_id})
 
         intermediate.then((value) => {
             setVacancies(value)
         })
-
-        // @ts-ignore
+        
         let user = request('/api/users/user_search', 'POST', {userId: user_id})
 
         user.then((value) => {
@@ -82,26 +80,20 @@ async function array_creation(request: any, userId: string) {
 
     let intermediate_vacancy, intermediate_users
 
-    //@ts-ignore
-    let data = request('/api/users/links_vacancy', 'POST', {userId}).then((value) => {
+    let data = request('/api/users/links_vacancy', 'POST', {userId}).then((value: string[]) => {
         return (value)
     })
 
     arr_links = await data;
 
     for(let i = 0; i < arr_links.length; i++) {
-        //@ts-ignore
-        let vacancy = request('/api/vacancy/vacancyid_search', 'POST', {id: arr_links[i]}).then((value) => {
-            // setArr_links(value)
+        let vacancy = request('/api/vacancy/vacancyid_search', 'POST', {id: arr_links[i]}).then((value: IValue) => {
             return (value)
         })
-
+        
         intermediate_vacancy = await vacancy
-
-        //@ts-ignore
-        let user = request('/api/vacancy/user_search', 'POST', {id: intermediate_vacancy}).then((value) => {
-            // setArr_links(value)
-
+        
+        let user = request('/api/vacancy/user_search', 'POST', {id: intermediate_vacancy}).then((value: IValue[]) => {
             return (value)
         })
 

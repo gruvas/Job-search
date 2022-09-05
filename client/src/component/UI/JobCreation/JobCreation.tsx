@@ -43,7 +43,7 @@ const JobCreation = () => {
         
         if(data_vacancy.experience !== 'Требуемый опыт работы' && data_vacancy.employment !== 'Тип занятости' &&
         data_vacancy.name_organization !== '' && data_vacancy.name !== '' && data_vacancy.contacts !== '') {
-            //@ts-ignore
+
             request('/api/vacancy/session_creation', 'POST', {...data_vacancy})
     
             alert('Данная вакансия была размещена на портале')

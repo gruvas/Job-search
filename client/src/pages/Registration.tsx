@@ -43,7 +43,6 @@ const Registration = () => {
 
     const registerHandler = async () => {
         try {
-            // @ts-ignore
             await request('/api/auth/register', 'POST', {...form})
             
             alert('Регистрация завершена')
