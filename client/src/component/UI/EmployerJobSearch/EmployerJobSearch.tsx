@@ -7,6 +7,7 @@ import UserList from '../UserList/UserList';
 
 import sort_options from '../../../store/sort_options';
 import search_string from '../../../store/search_string';
+import { IUser } from '../../interface/IUser';
 
 
 const EmployerJobSearch = observer(() => {
@@ -33,16 +34,14 @@ const EmployerJobSearch = observer(() => {
 
 
     useEffect(() => {
-        if(sort_options.state == true) {
-            if(sort_options.experience == 'Не имеет значения') {
-                //@ts-ignore
+        if(sort_options.state === true) {
+            if(sort_options.experience === 'Не имеет значения') {
                 let user = request('/api/users/user_search_salary', 'POST', {salary: Number(sort_options.salary)})
 
                 user.then((value) => {
                     setDataUser(value)
                 })
             } else {
-                //@ts-ignore
                 let user = request('/api/users/user_search_salary_experience', 'POST', {salary: sort_options.salary, experience: sort_options.experience})
                 
                 user.then((value) => {
@@ -55,8 +54,7 @@ const EmployerJobSearch = observer(() => {
     }, [sort_options.state])
 
     useEffect(() => {
-        if(search_string.state == true) {
-            //@ts-ignore
+        if(search_string.state === true) {
             let user = request('/api/users/user_search_profession', 'POST', {text: search_string.text})
             
             user.then((value) => {
@@ -69,7 +67,7 @@ const EmployerJobSearch = observer(() => {
 
     return (
         <>
-            {dataUser.map((post: any, index: number) =>
+            {dataUser.map((post: IUser, index: number) =>
                     <UserList value={post} index={index} key={'uesr_list' + post._id}/>
                 )
             }

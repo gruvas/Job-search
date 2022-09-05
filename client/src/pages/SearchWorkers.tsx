@@ -16,7 +16,7 @@ const SearchWorkers = () => {
             <div className='main_content'>
                 <h1 className='main_content_title'>Популярные вакансии</h1>
                 
-                <LeftCol/>
+                <LeftCol  value=''/>
 
                 <EmployerJobSearch/>
             </div>

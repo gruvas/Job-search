@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx"
 
 class search_string {    
     text = ''
-    state = false
+    state: boolean = false
     constructor() {
         makeAutoObservable(this)
     }

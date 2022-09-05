@@ -145,8 +145,6 @@ router.post('/delete',
 router.post('/user_delete_link',
     async(req, res) => {
         try{
-            console.log('Body: ', req.body)
-
             const {unemployed_id, reception_unemployed_id} = req.body
 
             await User.updateOne(
@@ -176,8 +174,6 @@ router.post('/user_delete_link',
 router.post('/respond',
     async(req, res) => {
         try{
-            console.log('Body: ', req.body)
-
             const {id, userId} = req.body
 
             await User.updateOne(
@@ -294,8 +290,6 @@ router.post('/vacancy_search_salary',
         const {salary} = req.body
 
         try{
-            // const vacancy = await Vacancy.find({status: true})
-            // const vacancy = await Vacancy.find({status: true, salary: {$gt: salary}})
             const vacancy = await Vacancy.find({status: true, salary: {$gte: salary}})
 
             res.json(vacancy)

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { observer } from 'mobx-react-lite';
 
 import style from './LeftCol.module.css'
@@ -9,7 +9,9 @@ import SalaryValidation from "../../validation/salary_validation";
 import sort_options from '../../../store/sort_options';
 import salary_change from './salary_change';
 
-const LeftCol = observer((props?: any) => {
+
+
+const LeftCol = observer((props: {value: string}) => {
     let st = props.value
 
     return (

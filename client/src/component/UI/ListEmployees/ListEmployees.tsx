@@ -1,21 +1,22 @@
 import { useState } from 'react';
 import { useHttp } from '../../../hooks/http.hook';
+import { IUser } from '../../interface/IUser';
 
-const ListEmployees = (props: any) => {
+
+export interface IValue extends IUser {
+    vacancy_id: string
+}
+
+const ListEmployees = (props: {index: number, key?: string, value: IValue[]}) => {
     const {request} = useHttp()
 
     let value = props.value[0]
-    let index = props.index[0]
-    let vacancyId = props.value.vacancy_id
+    let index = props.index
+    let vacancyId = props.value[0].vacancy_id
 
     const [element_display, setElementDisplay] = useState(true)
 
-
-    let storeg = JSON.parse(localStorage.getItem('useData') || 'false')
-
     function deleting_links(userId: string, vacancyId: string) {
-        console.log(userId, vacancyId)
-        //@ts-ignore
         request('/api/vacancy/deleting_links', 'POST', {userId, vacancyId})
 
         alert('Удаление прошло успешно')
@@ -23,15 +24,13 @@ const ListEmployees = (props: any) => {
         setElementDisplay(false)
     }
 
-    console.log(value._id, storeg.userId)
-
     return (
         <div>
             {
                 element_display && (
                     <>
                         {
-                            index == 0 && (
+                            index === 0 && (
                                 <h1 className='title'>Список откликнувшихся</h1>
                             )
                         }
@@ -39,7 +38,7 @@ const ListEmployees = (props: any) => {
                         <div className='list_employees'>
 
                             {
-                                value.profession != undefined && (
+                                value.profession !== undefined && (
                                     <h1 className='listVacancies_profession'>
                                         {value.profession}
                                     </h1>
@@ -47,7 +46,7 @@ const ListEmployees = (props: any) => {
                             }
 
                             {
-                                value.name != undefined && (
+                                value.name !== undefined && (
                                     <h1 className='listVacancies_company'>
                                         {value.name}
                                     </h1>
@@ -55,7 +54,7 @@ const ListEmployees = (props: any) => {
                             }
 
                             {
-                                value.salary != undefined && (
+                                value.salary !== undefined && (
                                     <h1 className='listVacancies_salary'>
                                         {value.salary} руб.
                                     </h1>
@@ -63,7 +62,7 @@ const ListEmployees = (props: any) => {
                             }
 
                             {
-                                value.about_me != undefined && (
+                                value.about_me !== undefined && (
                                     <h1 className='listVacancies_description'>
                                         <p className='bold'>Обо мне</p>
                                         <p>{value.about_me}</p>
@@ -72,7 +71,7 @@ const ListEmployees = (props: any) => {
                             }
 
                             {
-                                value.education != undefined && (
+                                value.education !== undefined && (
                                     <h1 className='listVacancies_description'>
                                         <p className='bold'>Образование</p>
                                         <p>{value.education}</p>
@@ -81,7 +80,7 @@ const ListEmployees = (props: any) => {
                             }
 
                             {
-                                value.contacts != undefined && (
+                                value.contacts !== undefined && (
                                     <h1 className='list_employees_contacts'>
                                         <p className='bold'>Контакты для связи: </p>
                                         <p>{value.contacts}</p>

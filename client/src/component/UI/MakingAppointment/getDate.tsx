@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHttp } from '../../../hooks/http.hook';
 
 import { ITime } from '../../interface/ITime';
@@ -59,9 +59,8 @@ export const Days = () => {
                 let _id = time[i]._id
                 let unemployed_id = time[i].unemployed
 
-                    //@ts-ignore
                     request('/api/reception_unemployed/delete', 'POST', {_id})
-                    //@ts-ignore
+
                     request('/api/reception_unemployed/user_delete_link', 'POST', {unemployed_id: unemployed_id[0], reception_unemployed_id: _id})
                 }
             }
@@ -147,35 +146,35 @@ export const Days = () => {
 
 
         for(let i = 0; i < time_segmented.length; i++) {
-            if(visiting_time_obj.month == time_segmented[i].month 
-                && visiting_time_obj.day == time_segmented[i].day) {
+            if(visiting_time_obj.month === time_segmented[i].month 
+                && visiting_time_obj.day === time_segmented[i].day) {
                     
-                    if(time_segmented[i].hours == 14) {
-                        if(time_segmented[i].minutes == 0) {
+                    if(time_segmented[i].hours === 14) {
+                        if(time_segmented[i].minutes === 0) {
                             state_variable[0] = 'inactive'
                         } 
                         
-                        if(time_segmented[i].minutes == 30) {
+                        if(time_segmented[i].minutes === 30) {
                             state_variable[1] = 'inactive'
                         } 
                     }
 
-                    if(time_segmented[i].hours == 15) {
-                        if(time_segmented[i].minutes == 0) {
+                    if(time_segmented[i].hours === 15) {
+                        if(time_segmented[i].minutes === 0) {
                             state_variable[2] = 'inactive'
                         } 
                         
-                        if(time_segmented[i].minutes == 30) {
+                        if(time_segmented[i].minutes === 30) {
                             state_variable[3] = 'inactive'
                         } 
                     }
 
-                    if(time_segmented[i].hours == 16) {
-                        if(time_segmented[i].minutes == 0) {
+                    if(time_segmented[i].hours === 16) {
+                        if(time_segmented[i].minutes === 0) {
                             state_variable[4] = 'inactive'
                         } 
                         
-                        if(time_segmented[i].minutes == 30) {
+                        if(time_segmented[i].minutes === 30) {
                             state_variable[5] = 'inactive'
                         } 
                     }
@@ -205,8 +204,8 @@ export const Days = () => {
     )
 }
 
-function timing_btn(e: any, id: string, hours: number, minutes: number) {
-    if(document.querySelector(`#${id}`)!.classList.value != 'appointment_timing_right_btn inactive'){
+function timing_btn(e: React.MouseEvent<HTMLButtonElement>, id: string, hours: number, minutes: number) {
+    if(document.querySelector(`#${id}`)!.classList.value !== 'appointment_timing_right_btn inactive'){
         visiting_time_obj.hours = hours
         visiting_time_obj.minutes = minutes
 

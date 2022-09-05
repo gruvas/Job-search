@@ -4,31 +4,30 @@ import { Link } from 'react-router-dom';
 import Header from '../component/UI/Header/Header';
 import JobCreation from '../component/UI/JobCreation/JobCreation';
 import ListCreatedVacancies from '../component/UI/ListCreatedVacancies/ListCreatedVacancies';
-import ListEmployees from '../component/UI/ListEmployees/ListEmployees';
+import ListEmployees, { IValue } from '../component/UI/ListEmployees/ListEmployees';
 import { useHttp } from '../hooks/http.hook';
 
-import { IVacancies } from '../component/interface/IVacancies';
+import { IUser } from '../component/interface/IUser';
+
 
 const PersonalAreaEmployer = () => {
     const {request} = useHttp()
 
-    const [vacancies, setVacancies] = useState<IVacancies[]>([]);
-    const [typeUser, setTypeUser] = useState<IVacancies[]>([]);
-    const [users, setUsers] = useState<any[]>([]);
+    const [vacancies, setVacancies] = useState<IUser[]>([]);
+    const [typeUser, setTypeUser] = useState<string>('');
+    const [users, setUsers] = useState<IValue[][]>([]);
 
     let useData = JSON.parse(localStorage.getItem('useData') || 'false')
     let user_id: string = useData.userId
 
 
     useEffect(() => {
-        // @ts-ignore
         let intermediate = request('/api/vacancy/vacancy_search', 'POST', {user_id})
 
         intermediate.then((value) => {
             setVacancies(value)
         })
-
-        // @ts-ignore
+        
         let user = request('/api/users/user_search', 'POST', {userId: user_id})
 
         user.then((value) => {
@@ -42,10 +41,6 @@ const PersonalAreaEmployer = () => {
         post_search()
     }, [])
 
-    useEffect(() => {
-        console.log('users', users)
-    }, [users])
-    
 
     return (
         <div>
@@ -64,10 +59,10 @@ const PersonalAreaEmployer = () => {
                 }
 
                 <JobCreation/>
-
+                
                 {users.map((post, index) =>
                         <ListEmployees value={post} index={index}
-                        key={'list_employees' + post._id + index}/>
+                        key={'list_employees' + post[0]._id + index}/>
                     )
                 }
 
@@ -80,44 +75,36 @@ export default PersonalAreaEmployer;
 
 
 async function array_creation(request: any, userId: string) {
-    let arr_links: any
-    let arr_users: any[] = []
+    let arr_links: string[]
+    let arr_users: IValue[][] = []
 
     let intermediate_vacancy, intermediate_users
 
-    //@ts-ignore
-    let data = request('/api/users/links_vacancy', 'POST', {userId}).then((value) => {
-        console.log('userId', userId)
-        console.log('value', value)
+    let data = request('/api/users/links_vacancy', 'POST', {userId}).then((value: string[]) => {
         return (value)
     })
 
     arr_links = await data;
 
     for(let i = 0; i < arr_links.length; i++) {
-        //@ts-ignore
-        let vacancy = request('/api/vacancy/vacancyid_search', 'POST', {id: arr_links[i]}).then((value) => {
-            // setArr_links(value)
+        let vacancy = request('/api/vacancy/vacancyid_search', 'POST', {id: arr_links[i]}).then((value: IValue) => {
             return (value)
         })
-
+        
         intermediate_vacancy = await vacancy
-
-        //@ts-ignore
-        let user = request('/api/vacancy/user_search', 'POST', {id: intermediate_vacancy}).then((value) => {
-            // setArr_links(value)
-
+        
+        let user = request('/api/vacancy/user_search', 'POST', {id: intermediate_vacancy}).then((value: IValue[]) => {
             return (value)
         })
 
         intermediate_users = await user
 
-        if(intermediate_users.length != 0) {
+        if(intermediate_users.length !== 0) {
             intermediate_users.vacancy_id = intermediate_vacancy._id
 
             arr_users.push(intermediate_users)
         }
     }
-
+    
     return(arr_users)
 }

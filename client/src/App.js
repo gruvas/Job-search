@@ -27,7 +27,7 @@ function App(){
                     {isAuthenticated ? (
                         <>
 
-                            {type == 'employer' && (
+                            {type === 'employer' && (
                                     <>
                                         <Route path={'/'} element={<JobSearch/>}/>
                                         <Route path={'/personal_area_employer'} element={<PersonalAreaEmployer/>}/>
@@ -35,7 +35,7 @@ function App(){
                                     </>
                             )} 
                             
-                            {type == 'workman' && (
+                            {type === 'workman' && (
                                     <>
                                         <Route path={'/'} element={<JobSearch/>}/>
                                         <Route path={'/personal_area_workman'} element={<PersonalAreaWorkman/>}/>
@@ -44,7 +44,7 @@ function App(){
                                 )
                             }
 
-                            {type == 'admin' && (
+                            {type === 'admin' && (
                                     <>
                                         <Route path={'/'} element={<JobSearch/>}/>
                                         <Route path={'/personal_area_admin'} element={<PersonalAreaAdmin/>}/>

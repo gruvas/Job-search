@@ -11,15 +11,13 @@ const Authorization = () => {
         password: ''
     })
 
-    const changeHandler = (event: any) => {
+    const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setForm({...form, [event.target.name]: event.target.value})
     }
 
     const loginHandler = async () => {
         try {
-            // @ts-ignore
             let data = await request('/api/auth/login', 'POST', {...form})
-            console.log('data', data)
 
             window.localStorage.setItem('useData', JSON.stringify(data))
             

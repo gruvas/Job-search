@@ -35,7 +35,7 @@ const JobCreation = () => {
         setData_vacancy({...data_vacancy, experience, employment})
     }, [employment, experience])
 
-    const changeHandler = (event: any) => {
+    const changeHandler = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         setData_vacancy({...data_vacancy, [event.target.name]: event.target.value})
     }
 
@@ -43,7 +43,7 @@ const JobCreation = () => {
         
         if(data_vacancy.experience !== 'Требуемый опыт работы' && data_vacancy.employment !== 'Тип занятости' &&
         data_vacancy.name_organization !== '' && data_vacancy.name !== '' && data_vacancy.contacts !== '') {
-            //@ts-ignore
+
             request('/api/vacancy/session_creation', 'POST', {...data_vacancy})
     
             alert('Данная вакансия была размещена на портале')

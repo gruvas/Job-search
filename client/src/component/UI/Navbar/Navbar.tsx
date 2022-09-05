@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-    // @ts-ignore
     let storeg = JSON.parse(localStorage.getItem('useData') || 'false')
     let pathname: string = document.location.pathname
 
@@ -28,7 +27,7 @@ const Navbar = () => {
                 : (
                     <div>
                         {
-                            pathname == '/' ? (
+                            pathname === '/' ? (
                                 <div className='navbar'>
                                     <Link className='link active' to="/">Соискателям</Link>
                                     <Link className='link' to="employer">Работодателям</Link>

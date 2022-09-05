@@ -2,9 +2,7 @@ const update_vacancy = (request, user) => {
     let user_obj = JSON.parse(localStorage.getItem('useData'))
     let user_id = user_obj.userId
 
-    console.log('user', user)
-        
-    if(user.experience == undefined) {
+    if(user.experience === undefined) {
         alert('Необходимо заполнить дополнительные контакты')
     } else {
         try {
