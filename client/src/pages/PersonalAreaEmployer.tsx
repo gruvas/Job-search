@@ -4,17 +4,18 @@ import { Link } from 'react-router-dom';
 import Header from '../component/UI/Header/Header';
 import JobCreation from '../component/UI/JobCreation/JobCreation';
 import ListCreatedVacancies from '../component/UI/ListCreatedVacancies/ListCreatedVacancies';
-import ListEmployees from '../component/UI/ListEmployees/ListEmployees';
+import ListEmployees, { IValue } from '../component/UI/ListEmployees/ListEmployees';
 import { useHttp } from '../hooks/http.hook';
 
 import { IUser } from '../component/interface/IUser';
+
 
 const PersonalAreaEmployer = () => {
     const {request} = useHttp()
 
     const [vacancies, setVacancies] = useState<IUser[]>([]);
     const [typeUser, setTypeUser] = useState<string>('');
-    const [users, setUsers] = useState<any[]>([]);
+    const [users, setUsers] = useState<IValue[][]>([]);
 
     let useData = JSON.parse(localStorage.getItem('useData') || 'false')
     let user_id: string = useData.userId
@@ -60,10 +61,10 @@ const PersonalAreaEmployer = () => {
                 }
 
                 <JobCreation/>
-
+                
                 {users.map((post, index) =>
                         <ListEmployees value={post} index={index}
-                        key={'list_employees' + post._id + index}/>
+                        key={'list_employees' + post[0]._id + index}/>
                     )
                 }
 
@@ -76,8 +77,8 @@ export default PersonalAreaEmployer;
 
 
 async function array_creation(request: any, userId: string) {
-    let arr_links: any
-    let arr_users: any[] = []
+    let arr_links: string[]
+    let arr_users: IValue[][] = []
 
     let intermediate_vacancy, intermediate_users
 
@@ -112,6 +113,6 @@ async function array_creation(request: any, userId: string) {
             arr_users.push(intermediate_users)
         }
     }
-
+    
     return(arr_users)
 }

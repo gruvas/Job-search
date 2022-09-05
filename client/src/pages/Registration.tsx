@@ -37,7 +37,7 @@ const Registration = () => {
 
     const [typePassword, setTypePassword] = useState('password');
 
-    const changeHandler = (event: any) => {
+    const changeHandler = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         setForm({...form, [event.target.name]: event.target.value})
     }
 

@@ -3,7 +3,7 @@ import { useHttp } from '../../../hooks/http.hook';
 import { IUser } from '../../interface/IUser';
 
 
-interface IValue extends IUser {
+export interface IValue extends IUser {
     vacancy_id: string
 }
 

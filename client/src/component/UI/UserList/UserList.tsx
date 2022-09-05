@@ -1,7 +1,7 @@
 import React from 'react';
-import { IStorageData } from '../../interface/IStorageData';
+import { IPropsUser } from '../../interface/IPropsUser';
 
-const UserList = (props:any) => {
+const UserList = (props: IPropsUser) => {
 
     let value = props.value
     

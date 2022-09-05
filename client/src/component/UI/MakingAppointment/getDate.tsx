@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHttp } from '../../../hooks/http.hook';
 
 import { ITime } from '../../interface/ITime';
@@ -147,8 +147,8 @@ export const Days = () => {
 
 
         for(let i = 0; i < time_segmented.length; i++) {
-            if(visiting_time_obj.month == time_segmented[i].month 
-                && visiting_time_obj.day == time_segmented[i].day) {
+            if(visiting_time_obj.month === time_segmented[i].month 
+                && visiting_time_obj.day === time_segmented[i].day) {
                     
                     if(time_segmented[i].hours === 14) {
                         if(time_segmented[i].minutes === 0) {
@@ -205,7 +205,7 @@ export const Days = () => {
     )
 }
 
-function timing_btn(e: any, id: string, hours: number, minutes: number) {
+function timing_btn(e: React.MouseEvent<HTMLButtonElement>, id: string, hours: number, minutes: number) {
     if(document.querySelector(`#${id}`)!.classList.value !== 'appointment_timing_right_btn inactive'){
         visiting_time_obj.hours = hours
         visiting_time_obj.minutes = minutes

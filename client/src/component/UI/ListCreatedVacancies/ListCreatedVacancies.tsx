@@ -28,7 +28,6 @@ const ListCreatedVacancies = (props: {index: number, key?: string, type: string,
     const [job_delete, setDeleteJob] = React.useState(false)
 
     function delete_job(vacancies: IVacancies) {
-        console.log('vacancies', vacancies)
         let id = vacancies._id
         let arr_links_creator = vacancies.links_creator
         let arr_links_user = vacancies.links_user
