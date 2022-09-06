@@ -1,5 +1,7 @@
-const update_vacancy = (request, user) => {
-    let user_obj = JSON.parse(localStorage.getItem('useData'))
+import { IShortDataUser } from "../../interface/IShortDataUser"
+
+const update_vacancy = (request: any, user: IShortDataUser) => {
+    let user_obj = JSON.parse(localStorage.getItem('useData')|| 'false')
     let user_id = user_obj.userId
 
     if(user.experience === undefined) {
