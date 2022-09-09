@@ -18,6 +18,7 @@ function App(){
 
     let type = JSON.parse(localStorage.getItem('useData') || 'false').type
     
+    
     return (
         <AuthContext.Provider value={{
             token, login, logout, userId, isAuthenticated

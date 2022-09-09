@@ -252,6 +252,9 @@ textarea {
 .listVacancies h1 {
     font-size: 16px;
     font-weight: 100;
+
+    word-break: break-all;
+    hyphenate-character: 6 3 2;
 }
 
 .listVacancies_profession {
@@ -981,7 +984,7 @@ textarea {
 
 @media (max-width: 468px) {
     .appointment_timing_right {
-        width: 141px;
+        width: 142px;
         height: 101px;
     }
 
