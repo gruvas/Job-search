@@ -1,48 +1,47 @@
-.left_col{
-    float: left;
-    width: 200px;
+.left_col {
+	float: left;
+	width: 200px;
 }
-.rightcol{
-    margin-left: 225px;
-}
-
-
-.income p{
-    margin-bottom: 10px;
+.rightcol {
+	margin-left: 225px;
 }
 
-.experience{
-    margin-top: 15px;
+.income p {
+	margin-bottom: 10px;
 }
 
-.experience p{
-    margin-bottom: 10px;
+.experience {
+	margin-top: 15px;
 }
 
-.block_radio{
-    margin-bottom: 5px;
+.experience p {
+	margin-bottom: 10px;
+}
+
+.block_radio {
+	margin-bottom: 5px;
 }
 
 .left_col_btn {
-    width: 100%;
+	width: 100%;
 
-    margin-top: 5px;
-    margin-bottom: 15px;
-    padding: 3px 11px;
+	margin-top: 5px;
+	margin-bottom: 15px;
+	padding: 3px 11px;
 
-    color: #fff;
-    background-color: #0032A0;
+	color: #fff;
+	background-color: #0032a0;
 
-    border: none;
-    border-radius: 5px;
+	border: none;
+	border-radius: 5px;
 }
 
-@media (max-width: 643px){
-    .left_col{
-        /* display: none; */
-    }
+@media (max-width: 643px) {
+	.left_col {
+		/* display: none; */
+	}
 
-    .left_col.search{
-        display: block;
-    }
+	.left_col.search {
+		display: block;
+	}
 }

@@ -1,34 +1,32 @@
-import { makeAutoObservable } from "mobx"
+import { makeAutoObservable } from 'mobx'
 
 class visiting_time {
-    visiting_time: IVisitingTime[] = []
+	visiting_time: IVisitingTime[] = []
 
-    constructor() {
-        makeAutoObservable(this)
-    }
+	constructor() {
+		makeAutoObservable(this)
+	}
 
-    addTime(time: IVisitingTime) {
-        this.visiting_time.push(time)
-    }
+	addTime(time: IVisitingTime) {
+		this.visiting_time.push(time)
+	}
 
-    removeTime(id: string) {
-        this.visiting_time = this.visiting_time.filter( time => time._id !== id)
-    }
+	removeTime(id: string) {
+		this.visiting_time = this.visiting_time.filter((time) => time._id !== id)
+	}
 
-    fetchTime(request: any) {
-        try {
-            this.visiting_time = request('/api/reception_unemployed/time', 'POST')           
-        } catch (e) {}
-    }
-
+	fetchTime(request: any) {
+		try {
+			this.visiting_time = request('/api/reception_unemployed/time', 'POST')
+		} catch (e) {}
+	}
 }
 
 export default new visiting_time()
 
 interface IVisitingTime {
-    _id: string
-    date: Date
-    employee: string
-    unemployed: string
+	_id: string
+	date: Date
+	employee: string
+	unemployed: string
 }
-
