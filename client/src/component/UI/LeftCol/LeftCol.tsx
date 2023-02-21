@@ -13,7 +13,7 @@ const LeftCol = observer((props: { value: string }) => {
 	let st = props.value
 
 	return (
-		<div className={`left_col ${st}`}>
+		<aside className={`left_col ${st}`}>
 			<div className={style.income}>
 				<p>Уровень дохода</p>
 
@@ -143,7 +143,7 @@ const LeftCol = observer((props: { value: string }) => {
 			>
 				Применить
 			</button>
-		</div>
+		</aside>
 	)
 })
 

@@ -31,7 +31,7 @@ const JobCreation = () => {
 
 	useEffect(() => {
 		setData_vacancy({ ...data_vacancy, experience, employment })
-	}, [employment, experience, data_vacancy])
+	}, [employment, experience])
 
 	const changeHandler = (
 		event:

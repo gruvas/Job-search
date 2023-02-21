@@ -5,40 +5,40 @@ const Navbar = () => {
 	let pathname: string = document.location.pathname
 
 	return (
-		<div>
+		<>
 			{!!storeg.token ? (
 				storeg.type === 'workman' ? (
-					<div className='navbar'>
+					<nav className='navbar'>
 						<Link
 							className='link'
 							to='personal_area_workman'
 						>
 							Личный кабинет
 						</Link>
-					</div>
+					</nav>
 				) : storeg.type === 'employer' ? (
-					<div className='navbar'>
+					<nav className='navbar'>
 						<Link
 							className='link'
 							to='personal_area_employer'
 						>
 							Личный кабинет
 						</Link>
-					</div>
+					</nav>
 				) : (
-					<div className='navbar'>
+					<nav className='navbar'>
 						<Link
 							className='link'
 							to='personal_area_admin'
 						>
 							Личный кабинет
 						</Link>
-					</div>
+					</nav>
 				)
 			) : (
-				<div>
+				<>
 					{pathname === '/' ? (
-						<div className='navbar'>
+						<nav className='navbar'>
 							<Link
 								className='link active'
 								to='/'
@@ -51,9 +51,9 @@ const Navbar = () => {
 							>
 								Работодателям
 							</Link>
-						</div>
+						</nav>
 					) : (
-						<div className='navbar'>
+						<nav className='navbar'>
 							<Link
 								className='link'
 								to='/'
@@ -66,11 +66,11 @@ const Navbar = () => {
 							>
 								Работодателям
 							</Link>
-						</div>
+						</nav>
 					)}
-				</div>
+				</>
 			)}
-		</div>
+		</>
 	)
 }
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import { IPropsUser } from '../../interface/IPropsUser'
 
 const UserList = (props: IPropsUser) => {

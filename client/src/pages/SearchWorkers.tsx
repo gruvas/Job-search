@@ -11,13 +11,13 @@ const SearchWorkers = () => {
 			<Navbar />
 			<Search />
 
-			<div className='main_content'>
+			<section className='main_content'>
 				<h1 className='main_content_title'>Популярные вакансии</h1>
 
 				<LeftCol value='' />
 
 				<EmployerJobSearch />
-			</div>
+			</section>
 		</div>
 	)
 }

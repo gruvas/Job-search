@@ -90,7 +90,7 @@ const ListCreatedVacancies = (props: {
 	}
 
 	return (
-		<div>
+		<section>
 			{job_delete ? (
 				<></>
 			) : (
@@ -202,7 +202,7 @@ const ListCreatedVacancies = (props: {
 					</div>
 				</div>
 			)}
-		</div>
+		</section>
 	)
 }
 

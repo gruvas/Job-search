@@ -9,23 +9,21 @@ const Header = () => {
 	)
 
 	return (
-		<div>
-			<header className='header'>
-				<p className='left_header'>РАБОТА РОССИИ кадровый центр</p>
+		<header className='header'>
+			<h1 className='left_header'>РАБОТА РОССИИ кадровый центр</h1>
 
-				<p className='center_header'>
-					Интерактивный портал службы занятости населения Орловского района
-				</p>
+			<h1 className='center_header'>
+				Интерактивный портал службы занятости населения Орловского района
+			</h1>
 
-				<img
-					className='coat_arms_img'
-					src={coat_arms_img}
-					alt=''
-				/>
+			<img
+				className='coat_arms_img'
+				src={coat_arms_img}
+				alt=''
+			/>
 
-				{!!storeg.token ? <PersonalArea /> : <Authorization />}
-			</header>
-		</div>
+			{!!storeg.token ? <PersonalArea /> : <Authorization />}
+		</header>
 	)
 }
 

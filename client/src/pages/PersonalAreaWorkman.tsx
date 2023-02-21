@@ -5,17 +5,17 @@ import MakingAppointment from '../component/UI/MakingAppointment/MakingAppointme
 
 const PersonalAreaWorkman = () => {
 	return (
-		<div>
+		<>
 			<Header />
 
-			<div className='navbar'>
+			<nav className='navbar'>
 				<Link
 					className='link'
 					to='/'
 				>
-					Перейсти на основную страницу
+					Перейти на основную страницу
 				</Link>
-			</div>
+			</nav>
 
 			<div className='main_content personal_area'>
 				<FillingResume />
@@ -24,7 +24,7 @@ const PersonalAreaWorkman = () => {
 
 				<MakingAppointment />
 			</div>
-		</div>
+		</>
 	)
 }
 

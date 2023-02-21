@@ -5,22 +5,22 @@ import AcceptanceSheet from '../component/UI/AcceptanceSheet/AcceptanceSheet'
 
 const PersonalAreaAdmin = () => {
 	return (
-		<div>
+		<section>
 			<Header />
 
-			<div className='navbar'>
+			<nav className='navbar'>
 				<Link
 					className='link'
 					to='/'
 				>
 					Перейсти на основную страницу
 				</Link>
-			</div>
+			</nav>
 
 			<h1 className='title personal_area_admin_title'>Личный кибинет</h1>
 
 			<AcceptanceSheet />
-		</div>
+		</section>
 	)
 }
 

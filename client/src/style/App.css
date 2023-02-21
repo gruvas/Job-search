@@ -94,12 +94,18 @@ textarea {
 	width: 120px;
 	margin-top: 41px;
 	margin-right: 15px;
+
+	font-size: 16px;
+	font-weight: 400;
 }
 
 .center_header {
 	width: 220px;
 	margin-top: 41px;
 	margin-right: 15px;
+
+	font-size: 16px;
+	font-weight: 400;
 }
 
 .coat_arms_img {

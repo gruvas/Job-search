@@ -47,14 +47,14 @@ const PersonalAreaEmployer = () => {
 		<div>
 			<Header />
 
-			<div className='navbar'>
+			<nav className='navbar'>
 				<Link
 					className='link'
 					to='/'
 				>
 					Перейсти на основную страницу
 				</Link>
-			</div>
+			</nav>
 
 			<div className='main_content personal_area'>
 				{vacancies.map((post, index) => (

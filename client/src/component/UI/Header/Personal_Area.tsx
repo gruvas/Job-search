@@ -30,46 +30,42 @@ const PersonalArea = () => {
 
 	return (
 		<div className='header_personal_area'>
-			<div>
-				<div className='header_personal_area_text'>
-					<h1>Личный кабинет</h1>
-					<p className='header_personal_area_email'>
-						{data_user.email || 'email'}
-					</p>
-					<p className='header_personal_area_name'>
-						{data_user.name || 'name'}
-					</p>
+			<div className='header_personal_area_text'>
+				<h1>Личный кабинет</h1>
+				<p className='header_personal_area_email'>
+					{data_user.email || 'email'}
+				</p>
+				<p className='header_personal_area_name'>{data_user.name || 'name'}</p>
 
-					{data_user.type === 'workman' && (
-						<>
-							<div className='header_personal_area_status'>
-								<p>Статус: </p>
-								{data_user.looking_job ? (
-									<p className='status_active'>&nbsp;активен</p>
-								) : (
-									<p className='status_not_active'>&nbsp;неактивен</p>
-								)}
-							</div>
+				{data_user.type === 'workman' && (
+					<>
+						<div className='header_personal_area_status'>
+							<p>Статус: </p>
+							{data_user.looking_job ? (
+								<p className='status_active'>&nbsp;активен</p>
+							) : (
+								<p className='status_not_active'>&nbsp;неактивен</p>
+							)}
+						</div>
 
-							<p
-								className='header_personal_area_change'
-								onClick={() => {
-									status_change(request, data_user)
-								}}
-							>
-								Изменить статус
-							</p>
-						</>
-					)}
-				</div>
-
-				<button
-					className='header_personal_area_btn'
-					onClick={exit}
-				>
-					Выйти
-				</button>
+						<p
+							className='header_personal_area_change'
+							onClick={() => {
+								status_change(request, data_user)
+							}}
+						>
+							Изменить статус
+						</p>
+					</>
+				)}
 			</div>
+
+			<button
+				className='header_personal_area_btn'
+				onClick={exit}
+			>
+				Выйти
+			</button>
 		</div>
 	)
 }

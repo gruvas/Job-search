@@ -52,7 +52,7 @@ const FillingResume = () => {
 	}
 
 	return (
-		<div>
+		<section>
 			<h1 className='main_content_title'>Личный кабинет</h1>
 
 			<div className='filling_resume'>
@@ -224,7 +224,7 @@ const FillingResume = () => {
 					Завершить оформление вакансии
 				</button>
 			</div>
-		</div>
+		</section>
 	)
 }
 
