@@ -1,8 +1,9 @@
 import { makeAutoObservable } from 'mobx'
 
-class search_string {
+class SearchString {
 	text = ''
 	state: boolean = false
+
 	constructor() {
 		makeAutoObservable(this)
 	}
@@ -16,4 +17,6 @@ class search_string {
 	}
 }
 
-export default new search_string()
+const search_string = new SearchString()
+
+export default search_string

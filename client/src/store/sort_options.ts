@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx'
 
-class sort_options {
+class SortOptions {
 	experience = 'Не имеет значения'
 	salary = 0
 	state = false
@@ -22,4 +22,6 @@ class sort_options {
 	}
 }
 
-export default new sort_options()
+const sort_options = new SortOptions()
+
+export default sort_options

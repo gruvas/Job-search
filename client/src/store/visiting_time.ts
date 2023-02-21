@@ -1,6 +1,7 @@
 import { makeAutoObservable } from 'mobx'
+import { IVisitingTime } from '../component/interface/IVisitingTime'
 
-class visiting_time {
+class VisitingTime {
 	visiting_time: IVisitingTime[] = []
 
 	constructor() {
@@ -22,11 +23,6 @@ class visiting_time {
 	}
 }
 
-export default new visiting_time()
+const visiting_time = new VisitingTime()
 
-interface IVisitingTime {
-	_id: string
-	date: Date
-	employee: string
-	unemployed: string
-}
+export default visiting_time
