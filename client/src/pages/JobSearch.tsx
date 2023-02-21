@@ -1,47 +1,38 @@
-import Header from '../component/UI/Header/Header';
-import LeftCol from '../component/UI/LeftCol/LeftCol';
-import Navbar from '../component/UI/Navbar/Navbar';
-import Search from '../component/UI/Search/Search';
-import WorkmanJobSearch from '../component/UI/WorkmanJobSearch/WorkmanJobSearch';
-import EmployerJobSearch from '../component/UI/EmployerJobSearch/EmployerJobSearch';
-
-
+import Header from '../component/UI/Header/Header'
+import LeftCol from '../component/UI/LeftCol/LeftCol'
+import Navbar from '../component/UI/Navbar/Navbar'
+import Search from '../component/UI/Search/Search'
+import WorkmanJobSearch from '../component/UI/WorkmanJobSearch/WorkmanJobSearch'
+import EmployerJobSearch from '../component/UI/EmployerJobSearch/EmployerJobSearch'
 
 const JobSearch = () => {
-    let type: string = JSON.parse(localStorage.getItem('useData') || 'false').type
+	let type: string = JSON.parse(localStorage.getItem('useData') || 'false').type
 
-    return (
-        <div>
-            <Header/>
-            <Navbar/>
-            <Search/>
+	return (
+		<div>
+			<Header />
+			<Navbar />
+			<Search />
 
-            <div className='main_content'>
-                <h1 className='main_content_title'>Популярные вакансии</h1>
-                
-                <LeftCol  value=''/>
+			<div className='main_content'>
+				<h1 className='main_content_title'>Популярные вакансии</h1>
 
-                {!!type ? (
-                    <>
-                        {type === 'workman' && (
-                            <WorkmanJobSearch/>
-                        )}
+				<LeftCol value='' />
 
-                        {type === 'employer' && (
-                            <EmployerJobSearch/>
-                        )}
+				{!!type ? (
+					<>
+						{type === 'workman' && <WorkmanJobSearch />}
 
-                        {type === 'admin' && (
-                            <WorkmanJobSearch/>
-                        )}
-                    </>
-                ) : (
-                    <WorkmanJobSearch/>
-                )}
-                
-            </div>
-        </div>
-    );
+						{type === 'employer' && <EmployerJobSearch />}
+
+						{type === 'admin' && <WorkmanJobSearch />}
+					</>
+				) : (
+					<WorkmanJobSearch />
+				)}
+			</div>
+		</div>
+	)
 }
 
-export default JobSearch;
+export default JobSearch

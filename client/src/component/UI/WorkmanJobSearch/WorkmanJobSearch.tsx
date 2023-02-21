@@ -1,95 +1,110 @@
-import { useState, useEffect } from 'react';
-import { observer } from 'mobx-react-lite';
+import { useState, useEffect } from 'react'
+import { observer } from 'mobx-react-lite'
 
-import { useHttp } from '../../../hooks/http.hook';
-import sort_options from '../../../store/sort_options';
+import { useHttp } from '../../../hooks/http.hook'
+import sort_options from '../../../store/sort_options'
 
-import ListCreatedVacancies from '../ListCreatedVacancies/ListCreatedVacancies';
-import search_string from '../../../store/search_string';
-import { IUser } from '../../interface/IUser';
-import { IVacancies } from '../../interface/IVacancies';
+import ListCreatedVacancies from '../ListCreatedVacancies/ListCreatedVacancies'
+import search_string from '../../../store/search_string'
+import { IUser } from '../../interface/IUser'
+import { IVacancies } from '../../interface/IVacancies'
 
 const WorkmanJobSearch = observer(() => {
-    const {request} = useHttp()
+	const { request } = useHttp()
 
-    let userId = JSON.parse(localStorage.getItem('useData') || 'false').userId
+	let userId = JSON.parse(localStorage.getItem('useData') || 'false').userId
 
-    const [vacancies, setVacancies] = useState<IVacancies[]>([]);
-    const [typeUser, setTypeUser] = useState<string>('');
+	const [vacancies, setVacancies] = useState<IVacancies[]>([])
+	const [typeUser, setTypeUser] = useState<string>('')
 
-    useEffect(() => {
-        const user_verification = async () => {
-            let data = request('/api/auth/check', 'POST', {id: userId}).then((value) => {
-                return value
-            })
-    
-            let user = await data
-            
-            if(user === null) {
-                localStorage.removeItem('useData')
+	useEffect(() => {
+		const user_verification = async () => {
+			let data = request('/api/auth/check', 'POST', { id: userId }).then(
+				(value) => {
+					return value
+				}
+			)
 
-                window.location.reload()
-            }
-        }
+			let user = await data
 
-        if(userId !== undefined) {
-            user_verification()
-        }
+			if (user === null) {
+				localStorage.removeItem('useData')
 
-        let intermediate = request('/api/vacancy/active_vacancy_search', 'POST')
+				window.location.reload()
+			}
+		}
 
-        intermediate.then((value: IVacancies[]) => {
-            setVacancies(value)
-        })
-        
-        let user = request('/api/users/user_search', 'POST', {userId})
-        
-        user.then((value: IUser) => {
-            setTypeUser(value.type || '')
-        })
-        
-    }, [])
+		if (userId !== undefined) {
+			user_verification()
+		}
 
-    useEffect(() => {
-        if(sort_options.state === true) {
-            if(sort_options.experience === 'Не имеет значения') {
-                let intermediate = request('/api/vacancy/vacancy_search_salary', 'POST', {salary: Number(sort_options.salary)})
+		let intermediate = request('/api/vacancy/active_vacancy_search', 'POST')
 
-                intermediate.then((value: IVacancies[]) => {
-                    setVacancies(value)
-                })
-            } else {
-                let intermediate = request('/api/vacancy/vacancy_search_salary_experience', 'POST', {salary: sort_options.salary, experience: sort_options.experience})
+		intermediate.then((value: IVacancies[]) => {
+			setVacancies(value)
+		})
 
-                intermediate.then((value: IVacancies[]) => {
-                    setVacancies(value)
-                })
-            }
+		let user = request('/api/users/user_search', 'POST', { userId })
 
-            sort_options.updateState(false)
-        }
-    }, [sort_options.state])
+		user.then((value: IUser | null) => {
+			setTypeUser(value?.type ?? '')
+		})
+	}, [])
 
-    useEffect(() => {
-        if(search_string.state === true) {
-            let intermediate = request('/api/vacancy/vacancy_search_name', 'POST', {text: search_string.text})
-            
-            intermediate.then((value: IVacancies[]) => {
-                setVacancies(value)
-            })
+	useEffect(() => {
+		if (sort_options.state === true) {
+			if (sort_options.experience === 'Не имеет значения') {
+				let intermediate = request(
+					'/api/vacancy/vacancy_search_salary',
+					'POST',
+					{ salary: Number(sort_options.salary) }
+				)
 
-            search_string.updateState(false)
-        }
-    }, [search_string.state])
+				intermediate.then((value: IVacancies[]) => {
+					setVacancies(value)
+				})
+			} else {
+				let intermediate = request(
+					'/api/vacancy/vacancy_search_salary_experience',
+					'POST',
+					{ salary: sort_options.salary, experience: sort_options.experience }
+				)
 
-    return (
-        <>
-            {vacancies.map((post, index) =>
-                    <ListCreatedVacancies value={post} type={typeUser} index={index} key={post._id}/>
-                )
-            }
-        </>
-    );
+				intermediate.then((value: IVacancies[]) => {
+					setVacancies(value)
+				})
+			}
+
+			sort_options.updateState(false)
+		}
+	}, [sort_options.state])
+
+	useEffect(() => {
+		if (search_string.state === true) {
+			let intermediate = request('/api/vacancy/vacancy_search_name', 'POST', {
+				text: search_string.text,
+			})
+
+			intermediate.then((value: IVacancies[]) => {
+				setVacancies(value)
+			})
+
+			search_string.updateState(false)
+		}
+	}, [search_string.state])
+
+	return (
+		<>
+			{vacancies.map((post, index) => (
+				<ListCreatedVacancies
+					value={post}
+					type={typeUser}
+					index={index}
+					key={post._id}
+				/>
+			))}
+		</>
+	)
 })
 
-export default WorkmanJobSearch;
+export default WorkmanJobSearch
