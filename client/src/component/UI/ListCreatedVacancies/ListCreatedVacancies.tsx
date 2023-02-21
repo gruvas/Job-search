@@ -34,7 +34,7 @@ const ListCreatedVacancies = (props: {
 		let arr_links_user = vacancies.links_user
 
 		if (arr_links_creator) {
-			arr_links_creator.map((post: string) => {
+			arr_links_creator.forEach((post: string) => {
 				request('/api/vacancy/one_creator_delete_link', 'POST', {
 					vacancyId: id,
 					creatorId: post,
@@ -43,7 +43,7 @@ const ListCreatedVacancies = (props: {
 		}
 
 		if (arr_links_user) {
-			arr_links_user.map((post: string) => {
+			arr_links_user.forEach((post: string) => {
 				request('/api/vacancy/one_user_delete_link', 'POST', {
 					vacancyId: id,
 					userId: post,

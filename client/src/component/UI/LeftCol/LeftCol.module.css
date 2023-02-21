@@ -37,10 +37,6 @@
 }
 
 @media (max-width: 643px) {
-	.left_col {
-		/* display: none; */
-	}
-
 	.left_col.search {
 		display: block;
 	}

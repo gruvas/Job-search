@@ -46,8 +46,8 @@ const WorkmanJobSearch = observer(() => {
 
 		let user = request('/api/users/user_search', 'POST', { userId })
 
-		user.then((value: IUser) => {
-			setTypeUser(value.type || '')
+		user.then((value: IUser | null) => {
+			setTypeUser(value?.type ?? '')
 		})
 	}, [])
 

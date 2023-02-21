@@ -13,11 +13,10 @@ import PersonalAreaAdmin from './pages/PersonalAreaAdmin';
 
 
 function App() {
-    const { token, login, logout, userId, ready } = useAuth()
+    const { token, login, logout, userId } = useAuth()
     const isAuthenticated = !!token
 
     let type = JSON.parse(localStorage.getItem('useData') || 'false').type
-
 
     return (
         <AuthContext.Provider value={{
