@@ -1,1 +1,0 @@
-Website for job search and registration of the unemployed
