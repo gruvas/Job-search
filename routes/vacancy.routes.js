@@ -135,7 +135,7 @@ router.post('/delete',
 
             await Vacancy.deleteOne({ _id: id })
 
-            res.status(201).json({ message: 'Удаление завершено' })
+            res.status(204).json({ message: 'Удаление завершено' })
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
         }
@@ -166,7 +166,7 @@ router.post('/user_delete_link',
             )
 
 
-            res.status(201).json({ message: 'Удаление ссылок завершено' })
+            res.status(204).json({ message: 'Удаление ссылок завершено' })
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
         }
@@ -195,7 +195,7 @@ router.post('/respond',
                 }
             )
 
-            res.status(201).json({ message: 'Удаление ссылок завершено' })
+            res.status(204).json({ message: 'Удаление ссылок завершено' })
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
         }
@@ -241,7 +241,7 @@ router.post('/deleting_links',
                 }
             )
 
-            res.status(201).json({ message: 'Удаление ссылок завершено' })
+            res.status(204).json({ message: 'Удаление ссылок завершено' })
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
         }
@@ -262,7 +262,7 @@ router.post('/one_user_delete_link',
                 }
             )
 
-            res.status(201).json({ message: 'Удаление ссылок завершено' })
+            res.status(204).json({ message: 'Удаление ссылок завершено' })
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
         }
@@ -283,7 +283,7 @@ router.post('/one_creator_delete_link',
                 }
             )
 
-            res.status(201).json({ message: 'Удаление ссылок завершено' })
+            res.status(204).json({ message: 'Удаление ссылок завершено' })
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
         }

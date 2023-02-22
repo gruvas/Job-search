@@ -47,7 +47,8 @@ router.post('/session_creation',
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
         }
-    })
+    }
+)
 
 router.post('/delete',
     async (req, res) => {
@@ -56,7 +57,7 @@ router.post('/delete',
 
             await Reception_unemployed.deleteOne({ _id })
 
-            res.status(201).json({ message: 'Удаление завершено' })
+            res.status(204).json({ message: 'Удаление завершено' })
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
         }
@@ -87,7 +88,7 @@ router.post('/user_delete_link',
             )
 
 
-            res.status(201).json({ message: 'Удаление ссылок завершено' })
+            res.status(204).json({ message: 'Удаление ссылок завершено' })
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
         }
