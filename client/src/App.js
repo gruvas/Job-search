@@ -26,7 +26,6 @@ function App() {
                 <Routes>
                     {isAuthenticated ? (
                         <>
-
                             {type === 'employer' && (
                                 <>
                                     <Route path={'/'} element={<JobSearch />} />
@@ -61,8 +60,6 @@ function App() {
                             <Route path="*" element={<Navigate replace to="/" />} />
                         </>
                     )}
-
-
                 </Routes>
             </div>
         </AuthContext.Provider>

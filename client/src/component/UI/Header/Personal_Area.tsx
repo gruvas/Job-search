@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { useHttp } from '../../../hooks/http.hook'
 
-import { exit } from '../../exit_personal_accountю'
+import { exit } from '../../exit_personal_account'
 import { IUser } from '../../interface/IUser'
 import { user_search } from '../../requests/user_search'
 import { status_change } from './status_change'
