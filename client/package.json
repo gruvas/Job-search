@@ -50,8 +50,6 @@
 		]
 	},
 	"devDependencies": {
-		"@types/react-transition-group": "^4.4.5",
-		"react-app-rewire-alias": "^1.1.7",
-		"react-app-rewired": "^2.2.1"
+		"@types/react-transition-group": "^4.4.5"
 	}
 }
